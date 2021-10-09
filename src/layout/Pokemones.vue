@@ -9,7 +9,7 @@
         <table class="table table-bordered col-sm-12">
           <thead>
             <tr>
-              <th scope="col" class="col-2">Pokemon</th>
+              <th scope="col" class="col-1">Pokemon</th>
               <th scope="col" class="col-2">Nombre</th>
               <th scope="col" class="col-2">Stats</th>
               <th scope="col" class="col-2">moves</th>
@@ -17,13 +17,16 @@
           </thead>
           <tbody>
             <tr v-for="(pokemon, key) in pokemons" :key="key">
-              <td scope="row">
-                <img
-                  class="card-img-top"
-                  style="width:auto;"
-                  :src="pokemon.url"
-                  alt=""
-                />
+              <td scope="row" class="pos">
+                <PokeballCargando v-if="!estadoPeticion"></PokeballCargando>
+                <div v-if="estadoPeticion">
+                  <img
+                    class="card-img-top"
+                    style="width:auto;"
+                    :src="pokemon.url"
+                    alt=""
+                  />
+                </div>
               </td>
               <td>{{ pokemon.name }}</td>
               <td>{{ pokemon.ability }}</td>
@@ -37,13 +40,15 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import PokeballCargando from "../components/Pokeball.vue";
 import axios from "axios";
 
 @Component({
-  components: {},
+  components: { PokeballCargando },
 })
 export default class Pokemones extends Vue {
   pokemons: any = [];
+  estadoPeticion = false;
   async mounted() {
     // console.log("mounted");
     await this.getTodos();
@@ -51,7 +56,7 @@ export default class Pokemones extends Vue {
   updated() {}
 
   getTodos() {
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 151; i++) {
       axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
@@ -60,16 +65,24 @@ export default class Pokemones extends Vue {
             name: respuesta.data.name,
             url: respuesta.data.sprites.front_default,
             ability: respuesta.data.abilities[0].ability.name,
-            move: respuesta.data.moves[0].move.name,   
+            move: respuesta.data.moves[0].move.name,
           };
-
+          this.estadoPeticion = true;
           this.pokemons.push(pokemon);
           // console.log(this.pokemons);
         })
         .catch((error) => {
           console.log(error);
+        })
+        .finally(() => {
+          this.estadoPeticion = true;
         });
     }
   }
 }
 </script>
+<style>
+.pos {
+  text-align: center;
+}
+</style>
