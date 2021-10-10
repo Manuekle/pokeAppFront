@@ -1,39 +1,43 @@
 <template>
-  <div class="container">
-    <!-- pokemones -->
-    <div class="row">
-      <h1 class="mt-4">Lista de Pokemones</h1>
-    </div>
-    <div>
-      <div class="row">
-        <table class="table table-bordered col-sm-12">
-          <thead>
-            <tr>
-              <th scope="col" class="col-1">Pokemon</th>
-              <th scope="col" class="col-2">Nombre</th>
-              <th scope="col" class="col-2">Stats</th>
-              <th scope="col" class="col-2">moves</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(pokemon, key) in pokemons" :key="key">
-              <td scope="row" class="pos">
-                <PokeballCargando v-if="!estadoPeticion"></PokeballCargando>
-                <div v-if="estadoPeticion">
-                  <img
-                    class="card-img-top"
-                    style="width:auto;"
-                    :src="pokemon.url"
-                    alt=""
-                  />
-                </div>
-              </td>
-              <td>{{ pokemon.name }}</td>
-              <td>{{ pokemon.ability }}</td>
-              <td>{{ pokemon.move }}</td>
-            </tr>
-          </tbody>
-        </table>
+  <div>
+    <div class="container">
+      <!-- pokemones -->
+      <div class="card-body">
+        <div class="row">
+          <h1 class="mt-4">Lista de Pokemones</h1>
+        </div>
+        <div>
+          <div class="row table-responsive">
+            <table class="table table-bordered col-sm-12">
+              <thead>
+                <tr>
+                  <th scope="col" class="col-1">Pokemon</th>
+                  <th scope="col" class="col-2">Nombre</th>
+                  <th scope="col" class="col-2">Stats</th>
+                  <th scope="col" class="col-2">moves</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(pokemon, key) in pokemons" :key="key">
+                  <td scope="row" class="pos">
+                    <PokeballCargando v-if="!estadoPeticion"></PokeballCargando>
+                    <div v-if="estadoPeticion">
+                      <img
+                        class="card-img-top"
+                        style="width:auto;"
+                        :src="pokemon.url"
+                        alt=""
+                      />
+                    </div>
+                  </td>
+                  <td>{{ pokemon.name }}</td>
+                  <td>{{ pokemon.ability }}</td>
+                  <td>{{ pokemon.move }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,7 +60,7 @@ export default class Pokemones extends Vue {
   updated() {}
 
   getTodos() {
-    for (let i = 0; i <= 151; i++) {
+    for (let i = 0; i <= 8; i++) {
       axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
