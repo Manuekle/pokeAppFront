@@ -237,3 +237,22 @@ Instagram: <a href="https://www.instagram.com/creativetimofficial/" target="_bla
 - License Agreement: <a href="https://www.creative-tim.com/license?ref=vn-readme" target="_blank">https://www.creative-tim.com/license?ref=vn-readme</a>
 - Support: <a href="https://www.creative-tim.com/contact-us?ref=vn-readme" target="_blank">https://www.creative-tim.com/contact-us?ref=vn-readme</a>
 - Issues: <a href="https://github.com/creativetimofficial/vue-notus/issues" target="_blank">Github Issues Page</a>
+
+# poke App
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

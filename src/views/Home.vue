@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="back">
     <!-- <IndexNavbar /> -->
     <div class="mt-10"></div>
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap">
+        <!-- Region de kanto -->
         <div class="w-full px-4 flex-1 md:w-auto md:flex-none">
           <div>
             <span
@@ -922,6 +923,7 @@ import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
   },
 })
 export default class Pokemones extends Vue {
+  // Regiones
   kanto: any = []; //0-151
   johto: any = []; //152-251
   hoenn: any = []; //252-386
@@ -930,8 +932,7 @@ export default class Pokemones extends Vue {
   kalos: any = []; //650-721
   alola: any = []; //722-809
   galar: any = []; //809-898
-  // abilities: any = []; 
-  tipo: any = [];
+
   async mounted() {
     // console.log("mounted");
     await this.getTodosKanto();
@@ -943,11 +944,12 @@ export default class Pokemones extends Vue {
       axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
-
+          // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
             ability: respuesta.data.abilities[0].ability.name,
+            // traigo el tipo 1 y 2
             type_0: respuesta.data.types[0].type.name,
             type_1: respuesta.data.types[1].type.name,
           };
