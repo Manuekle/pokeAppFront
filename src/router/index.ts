@@ -65,7 +65,7 @@ const router = new Router({
         {
           path: "/admin/maps",
           component: Maps,
-        },
+        },        
       ],
     },
     {
