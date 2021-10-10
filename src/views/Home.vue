@@ -2,7 +2,7 @@
   <div>
     <div class="mt-10"></div>
     <div class="container mx-auto px-4">
-      <!-- tabs -->      
+      <!-- tabs -->
       <div class="flex flex-wrap">
         <div class="w-full">
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
@@ -115,6 +115,7 @@
                   }"
                 >
                   <Kanto />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -123,6 +124,7 @@
                   }"
                 >
                   <Johto />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -131,6 +133,7 @@
                   }"
                 >
                   <Hoenn />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -139,6 +142,7 @@
                   }"
                 >
                   <Sinnoh />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -147,6 +151,7 @@
                   }"
                 >
                   <Teselia />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -155,6 +160,7 @@
                   }"
                 >
                   <Kalos />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -163,6 +169,7 @@
                   }"
                 >
                   <Alola />
+                  <Loader />
                 </div>
                 <div
                   v-bind:class="{
@@ -171,10 +178,11 @@
                   }"
                 >
                   <Galar />
+                  <Loader />
                 </div>
               </div>
             </div>
-          </div>
+          </div>          
         </div>
       </div>
       <!-- fin tabs -->
@@ -191,6 +199,9 @@ import Teselia from "@/components/Regions/Teselia.vue";
 import Kalos from "@/components/Regions/Kalos.vue";
 import Alola from "@/components/Regions/Alola.vue";
 import Galar from "@/components/Regions/Galar.vue";
+
+import Loader from "@/components/Loading/Loader.vue";
+
 export default {
   name: "red-tabs",
   data() {
@@ -206,7 +217,8 @@ export default {
     Teselia,
     Kalos,
     Alola,
-    Galar
+    Galar,
+    Loader
   },
   methods: {
     toggleTabs: function(tabNumber) {

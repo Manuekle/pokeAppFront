@@ -9,6 +9,7 @@ import "@/assets/styles/tailwind.css";
 // flowbite
 // import { Flowbite } from '@themesberg/flowbite'
 // Vue.use(Flowbite)
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
