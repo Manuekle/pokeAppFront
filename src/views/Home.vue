@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div>
     <!-- <IndexNavbar /> -->
     <div class="mt-10"></div>
     <div class="container px-4 mx-auto">
@@ -17,8 +17,9 @@
                 rounded
                 border border-solid border-blueGray-100
               "
-              >Kanto Pokédex</span
             >
+              Kanto Pokédex
+            </span>
           </div>
           <div class="block w-full overflow-x-auto">
             <!-- Projects table -->
@@ -77,7 +78,7 @@
                       text-left
                     "
                   >
-                    Abilidad
+                    Peso
                   </th>
                   <th
                     class="
@@ -95,7 +96,25 @@
                       text-left
                     "
                   >
-                    Tipo
+                    Abilidades
+                  </th>
+                  <th
+                    class="
+                      px-6
+                      bg-blueGray-50
+                      text-blueGray-500
+                      align-middle
+                      border border-solid border-blueGray-100
+                      py-3
+                      text-xs
+                      uppercase
+                      border-l-0 border-r-0
+                      whitespace-nowrap
+                      font-semibold
+                      text-left
+                    "
+                  >
+                    Tipos
                   </th>
                 </tr>
               </thead>
@@ -141,25 +160,111 @@
                       p-4
                     "
                   >
-                    <span
-                      class="
-                        text-xs
-                        font-semibold
-                        inline-block
-                        py-1
-                        px-2
-                        uppercase
-                        rounded
-                        text-blueGray-600
-                        bg-blueGray-200
-                        uppercase
-                        last:mr-0
-                        mr-1
-                      "
-                    >
-                      {{ pokemon.ability }}
-                    </span>
+                    {{ pokemon.weight }} kg
                   </td>
+                  <!-- Abilidades -->
+                  <div class="flex flex-wrap">
+                    <!-- abilidad 0 -->
+                    <div class="w-1/3 px-4">
+                      <td
+                        class="
+                          border-t-0
+                          px-6
+                          align-middle
+                          border-l-0 border-r-0
+                          text-xs
+                          whitespace-nowrap
+                          p-4
+                        "
+                      >
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded
+                            text-blueGray-600
+                            bg-blueGray-200
+                            uppercase
+                            last:mr-0
+                            mr-1
+                          "
+                        >
+                          {{ pokemon.ability_0 }}
+                        </span>
+                      </td>
+                    </div>
+                    <!-- abilidad 1 -->
+                    <div class="w-1/3 px-4">
+                      <td
+                        class="
+                          border-t-0
+                          px-6
+                          align-middle
+                          border-l-0 border-r-0
+                          text-xs
+                          whitespace-nowrap
+                          p-4
+                        "
+                      >
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded
+                            text-blueGray-600
+                            bg-blueGray-200
+                            uppercase
+                            last:mr-0
+                            mr-1
+                          "
+                        >
+                          {{ pokemon.ability_1 }}
+                        </span>
+                      </td>
+                    </div>
+                    <!-- abilidad 2 -->
+                    <div class="w-1/3 px-4">
+                      <td
+                        class="
+                          border-t-0
+                          px-6
+                          align-middle
+                          border-l-0 border-r-0
+                          text-xs
+                          whitespace-nowrap
+                          p-4
+                        "
+                      >
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            inline-block
+                            py-1
+                            px-2
+                            uppercase
+                            rounded
+                            text-blueGray-600
+                            bg-blueGray-200
+                            uppercase
+                            last:mr-0
+                            mr-1
+                          "
+                        >
+                          {{ pokemon.ability_2 }}
+                        </span>
+                      </td>
+                    </div>
+                  </div>
+                  <!-- pokemon tipo -->
                   <td
                     class="
                       border-t-0
@@ -944,11 +1049,18 @@ export default class Pokemones extends Vue {
       axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
+          // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
+          console.log(respuesta.data);
+
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
-            ability: respuesta.data.abilities[0].ability.name,
+            // traigo las habilidades
+            ability_0: respuesta.data.abilities[0].ability.name,
+            ability_1: respuesta.data.abilities[1].ability.name,
+            ability_2: respuesta.data.abilities[2].ability.name,
+            weight: respuesta.data.weight,
             // traigo el tipo 1 y 2
             type_0: respuesta.data.types[0].type.name,
             type_1: respuesta.data.types[1].type.name,
