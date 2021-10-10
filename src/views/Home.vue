@@ -99,7 +99,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(pokemon, key) in pokemons" :key="key">
+                <tr v-for="(pokemon, key) in kanto" :key="key">
                   <th
                     class="
                       border-t-0
@@ -922,16 +922,23 @@ import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
   },
 })
 export default class Pokemones extends Vue {
-  pokemons: any = [];
+  kanto: any = []; //0-151
+  johto: any = []; //152-251
+  hoenn: any = []; //252-386
+  sinnoh: any = []; //387-493
+  teselia: any = []; //494-649
+  kalos: any = []; //650-721
+  alola: any = []; //722-809
+  galar: any = []; //809-898
   // abilities: any = []; 
   tipo: any = [];
   async mounted() {
     // console.log("mounted");
-    await this.getTodos();
+    await this.getTodosKanto();
   }
   updated() { }
 
-  getTodos() {
+  getTodosKanto() {
     for (let i = 0; i <= 151; i++) {
       axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
@@ -944,7 +951,7 @@ export default class Pokemones extends Vue {
             type_0: respuesta.data.types[0].type.name,
             type_1: respuesta.data.types[1].type.name,
           };
-          this.pokemons.push(pokemon);
+          this.kanto.push(pokemon);
           // console.log(this.pokemons);
         })
         .catch((error) => {
