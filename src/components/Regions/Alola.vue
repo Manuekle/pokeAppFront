@@ -627,6 +627,390 @@
                           </span>
                         </div>
                       </div>
+                      <br />
+                      <!-- tipo pokemon 1 -->
+                      <div class="w-full mt-2">
+                        <div v-if="pokemon.type_1 == 'dark'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              dark
+                              text-dark
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'fire'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              fire
+                              text-fire
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'grass'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              grass
+                              text-grass
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'water'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              water
+                              text-water
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'bug'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              bug
+                              text-bug
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'electric'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              electric
+                              text-electric
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'ground'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              ground
+                              text-ground
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'rock'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              rock
+                              text-rock
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'fairy'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              fairy
+                              text-fairy
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'poison'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              poison
+                              text-poison
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'psychic'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              psychic
+                              text-psychic
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'flying'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              flying
+                              text-flying
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'dragon'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              dragon
+                              text-dragon
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'fighting'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              fighting
+                              text-fighting
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'normal'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              normal
+                              text-normal
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'ghost'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              ghost
+                              text-ghost
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'ice'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              ice
+                              text-ice
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'sinister'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              sinister
+                              text-sinister
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                        <div v-if="pokemon.type_1 == 'steel'">
+                          <span
+                            class="
+                              text-xs
+                              font-semibold
+                              inline-block
+                              py-1
+                              px-2
+                              uppercase
+                              rounded
+                              steel
+                              text-steel
+                              uppercase
+                              last:mr-0
+                              mr-1
+                            "
+                          >
+                            {{ pokemon.type_1 }}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -657,6 +1041,8 @@ export default class Alola extends Vue {
   alola: any = []; //722-809
   galar: any = []; //809-898
 
+  tipos: any = [];
+
   async mounted() {
     // console.log("mounted");
     await this.getTodosAlola();
@@ -670,7 +1056,11 @@ export default class Alola extends Vue {
         .then((respuesta) => {
           // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
           console.log(respuesta.data);
-
+          for (let j = 0; j < respuesta.data.types.length; j++) {
+            // console.log(respuesta.data.types[j].type.name);
+            this.tipos.push(respuesta.data.types[j].type.name);
+          }
+          console.log(this.tipos);
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             name: respuesta.data.name.toUpperCase(),
@@ -680,8 +1070,8 @@ export default class Alola extends Vue {
             ability: respuesta.data.abilities[0].ability.name,
             weight: respuesta.data.weight,
             // traigo el tipo 1 y 2
-            type_0: respuesta.data.types[0].type.name,
-            // type_1: respuesta.data.types[1].type.name,
+            type_0: this.tipos.shift(),
+            type_1: this.tipos.shift(),
           };
           this.alola.push(pokemon);
           // console.log(this.pokemons);
