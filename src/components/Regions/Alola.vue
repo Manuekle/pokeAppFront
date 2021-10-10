@@ -58,6 +58,24 @@
                       text-left
                     "
                   >
+                    Pokémon Shiny
+                  </th>
+                  <th
+                    class="
+                      px-6
+                      bg-blueGray-50
+                      text-blueGray-500
+                      align-middle
+                      border border-solid border-blueGray-100
+                      py-3
+                      text-xs
+                      uppercase
+                      border-l-0 border-r-0
+                      whitespace-nowrap
+                      font-semibold
+                      text-left
+                    "
+                  >
                     Nombre
                   </th>
                   <th
@@ -132,6 +150,26 @@
                   >
                     <div>
                       <img style="width: auto" :src="pokemon.url" alt="" />
+                    </div>
+                  </th>
+                  <th
+                    class="
+                      border-t-0
+                      px-6
+                      align-middle
+                      border-l-0 border-r-0
+                      text-xs
+                      whitespace-nowrap
+                      p-4
+                      text-left
+                    "
+                  >
+                    <div>
+                      <img
+                        style="width: auto"
+                        :src="pokemon.url_shiny"
+                        alt=""
+                      />
                     </div>
                   </th>
                   <td
@@ -637,6 +675,7 @@ export default class Alola extends Vue {
           let pokemon = {
             name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
+            url_shiny: respuesta.data.sprites.front_shiny,
             // traigo las habilidades
             ability: respuesta.data.abilities[0].ability.name,
             weight: respuesta.data.weight,

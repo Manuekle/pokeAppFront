@@ -2,7 +2,7 @@
   <div>
     <div class="mt-10"></div>
     <div class="container mx-auto px-4">
-      <!-- tabs -->
+      <!-- tabs -->      
       <div class="flex flex-wrap">
         <div class="w-full">
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
@@ -206,7 +206,7 @@ export default {
     Teselia,
     Kalos,
     Alola,
-    Galar    
+    Galar
   },
   methods: {
     toggleTabs: function(tabNumber) {

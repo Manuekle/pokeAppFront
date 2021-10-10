@@ -6,6 +6,10 @@ import store from './store'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/styles/tailwind.css";
 
+// flowbite
+// import { Flowbite } from '@themesberg/flowbite'
+// Vue.use(Flowbite)
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
