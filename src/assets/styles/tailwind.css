@@ -4102,3 +4102,122 @@ select {
 }
 
 @media (min-width: 1536px) {}
+
+/* Colores de tipos de pokemon */
+/* color de letra */
+/* color de letra */
+.text-fire {
+  color: #a14b4b;
+}
+.text-grass {
+  color: #289c28;
+}
+.text-electric {
+  color: #b89405;
+}
+.text-water {
+  color: #3899f8;
+}
+.text-ground {
+  color: #a1936f;
+}
+.text-rock {
+  color: #998549;
+}
+.text-fairy {
+  color: #a773a7;
+}
+.text-poison {
+  color: #854a7a;
+}
+.text-bug {
+  color: #8d9921;
+}
+.text-dragon {
+  color: #6350b6;
+}
+.text-psychic {
+  color: #9c4966;
+}
+.text-flying {
+  color: #6f7cb4;
+}
+.text-fighting {
+  color: #a05038;
+}
+.text-normal {
+  color: #837d72;
+}
+.text-ghost {
+  color: #6060b0;
+}
+.text-ice {
+  color: #4397aa;
+}
+.text-sinister {
+  color: #7a5848;
+}
+.text-steel {
+  color: #787880;
+}
+.text-dark {
+  color: rgba(214, 209, 209, 0.733);
+}
+/* color de fondo */
+.fire {
+  background-color: #f57d7dad;
+}
+.grass {
+  background-color: #82f182b2;
+}
+.electric {
+  background-color: #fcdf69b4;
+}
+.water {
+  background-color: #78b9faad;
+}
+.ground {
+  background-color: #e9d6a49c;
+}
+.rock {
+  background-color: #c5ae69a9;
+}
+.fairy {
+  background-color: #e6a3e6b0;
+}
+.poison {
+  background-color: #e075ccad;
+}
+.bug {
+  background-color: #c1cc5db4;
+}
+.dragon {
+  background-color: #8c77ec9f;
+}
+.psychic {
+  background-color: #fc81acab;
+}
+.flying {
+  background-color: #98a8f0b7;
+}
+.fighting {
+  background-color: #ce7c63a2;
+}
+.normal {
+  background-color: #a8a090ad;
+}
+.ghost {
+  background-color: #9494e7a8;
+}
+.ice {
+  background-color: #8adceeaf;
+}
+.sinister {
+  background-color: #ac8573b7;
+}
+.steel {
+  background-color: #a3a3a8b6;
+}
+.dark{
+  background-color: rgba(51, 51, 51, 0.877);
+}

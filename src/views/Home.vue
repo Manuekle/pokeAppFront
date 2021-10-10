@@ -1,1189 +1,217 @@
 <template>
   <div>
-    <!-- <IndexNavbar /> -->
     <div class="mt-10"></div>
-    <div class="container px-4 mx-auto">
+    <div class="container mx-auto px-4">
+      <!-- tabs -->
       <div class="flex flex-wrap">
-        <!-- Region de kanto -->
-        <div class="w-full px-4 flex-1 md:w-auto md:flex-none">
-          <div>
-            <span
-              class="
-                text-sm
-                block
-                my-4
-                p-3
-                text-blueGray-700
-                rounded
-                border border-solid border-blueGray-100
-              "
-            >
-              Kanto Pokédex
-            </span>
-          </div>
-          <div class="block w-full overflow-x-auto">
-            <!-- Projects table -->
-            <table class="items-center w-full bg-transparent border-collapse">
-              <thead>
-                <tr>
-                  <th
-                    class="
-                      px-6
-                      bg-blueGray-50
-                      text-blueGray-500
-                      align-middle
-                      border border-solid border-blueGray-100
-                      py-3
-                      text-xs
-                      uppercase
-                      border-l-0 border-r-0
-                      whitespace-nowrap
-                      font-semibold
-                      text-left
-                    "
-                  >
-                    Pokémon
-                  </th>
-                  <th
-                    class="
-                      px-6
-                      bg-blueGray-50
-                      text-blueGray-500
-                      align-middle
-                      border border-solid border-blueGray-100
-                      py-3
-                      text-xs
-                      uppercase
-                      border-l-0 border-r-0
-                      whitespace-nowrap
-                      font-semibold
-                      text-left
-                    "
-                  >
-                    Nombre
-                  </th>
-                  <th
-                    class="
-                      px-6
-                      bg-blueGray-50
-                      text-blueGray-500
-                      align-middle
-                      border border-solid border-blueGray-100
-                      py-3
-                      text-xs
-                      uppercase
-                      border-l-0 border-r-0
-                      whitespace-nowrap
-                      font-semibold
-                      text-left
-                    "
-                  >
-                    Peso
-                  </th>
-                  <th
-                    class="
-                      px-6
-                      bg-blueGray-50
-                      text-blueGray-500
-                      align-middle
-                      border border-solid border-blueGray-100
-                      py-3
-                      text-xs
-                      uppercase
-                      border-l-0 border-r-0
-                      whitespace-nowrap
-                      font-semibold
-                      text-left
-                    "
-                  >
-                    Abilidades
-                  </th>
-                  <th
-                    class="
-                      px-6
-                      bg-blueGray-50
-                      text-blueGray-500
-                      align-middle
-                      border border-solid border-blueGray-100
-                      py-3
-                      text-xs
-                      uppercase
-                      border-l-0 border-r-0
-                      whitespace-nowrap
-                      font-semibold
-                      text-left
-                    "
-                  >
-                    Tipos
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(pokemon, key) in kanto" :key="key">
-                  <th
-                    class="
-                      border-t-0
-                      px-6
-                      align-middle
-                      border-l-0 border-r-0
-                      text-xs
-                      whitespace-nowrap
-                      p-4
-                      text-left
-                    "
-                  >
-                    <div>
-                      <img style="width: auto" :src="pokemon.url" alt="" />
-                    </div>
-                  </th>
-                  <td
-                    class="
-                      border-t-0
-                      px-6
-                      align-middle
-                      border-l-0 border-r-0
-                      text-xs
-                      whitespace-nowrap
-                      p-4
-                    "
-                  >
-                    {{ pokemon.name }}
-                  </td>
-                  <td
-                    class="
-                      border-t-0
-                      px-6
-                      align-middle
-                      border-l-0 border-r-0
-                      text-xs
-                      whitespace-nowrap
-                      p-4
-                    "
-                  >
-                    {{ pokemon.weight }} kg
-                  </td>
-                  <!-- Abilidades -->
-                  <div class="flex flex-wrap">
-                    <!-- abilidad 0 -->
-                    <div class="w-1/3 px-4">
-                      <td
-                        class="
-                          border-t-0
-                          px-6
-                          align-middle
-                          border-l-0 border-r-0
-                          text-xs
-                          whitespace-nowrap
-                          p-4
-                        "
-                      >
-                        <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded
-                            text-blueGray-600
-                            bg-blueGray-200
-                            uppercase
-                            last:mr-0
-                            mr-1
-                          "
-                        >
-                          {{ pokemon.ability_0 }}
-                        </span>
-                      </td>
-                    </div>
-                    <!-- abilidad 1 -->
-                    <div class="w-1/3 px-4">
-                      <td
-                        class="
-                          border-t-0
-                          px-6
-                          align-middle
-                          border-l-0 border-r-0
-                          text-xs
-                          whitespace-nowrap
-                          p-4
-                        "
-                      >
-                        <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded
-                            text-blueGray-600
-                            bg-blueGray-200
-                            uppercase
-                            last:mr-0
-                            mr-1
-                          "
-                        >
-                          {{ pokemon.ability_1 }}
-                        </span>
-                      </td>
-                    </div>
-                    <!-- abilidad 2 -->
-                    <div class="w-1/3 px-4">
-                      <td
-                        class="
-                          border-t-0
-                          px-6
-                          align-middle
-                          border-l-0 border-r-0
-                          text-xs
-                          whitespace-nowrap
-                          p-4
-                        "
-                      >
-                        <span
-                          class="
-                            text-xs
-                            font-semibold
-                            inline-block
-                            py-1
-                            px-2
-                            uppercase
-                            rounded
-                            text-blueGray-600
-                            bg-blueGray-200
-                            uppercase
-                            last:mr-0
-                            mr-1
-                          "
-                        >
-                          {{ pokemon.ability_2 }}
-                        </span>
-                      </td>
-                    </div>
-                  </div>
-                  <!-- pokemon tipo -->
-                  <td
-                    class="
-                      border-t-0
-                      px-6
-                      align-middle
-                      border-l-0 border-r-0
-                      text-xs
-                      whitespace-nowrap
-                      p-4
-                    "
-                  >
-                    <!-- Tipos de pokemon por color -->
-                    <div class="flex flex-wrap">
-                      <!-- tipo pokemon 0 -->
-                      <div class="w-full">
-                        <div v-if="pokemon.type_0 == 'fire'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fire
-                              text-fire
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'grass'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              grass
-                              text-grass
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'water'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              water
-                              text-water
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'bug'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              bug
-                              text-bug
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'electric'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              electric
-                              text-electric
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'ground'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ground
-                              text-ground
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'rock'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              rock
-                              text-rock
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'fairy'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fairy
-                              text-fairy
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'poison'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              poison
-                              text-poison
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'psychic'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              psychic
-                              text-psychic
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'flying'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              flying
-                              text-flying
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'dragon'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              dragon
-                              text-dragon
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'fighting'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fighting
-                              text-fighting
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'normal'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              normal
-                              text-normal
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'ghost'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ghost
-                              text-ghost
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'ice'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ice
-                              text-ice
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'sinister'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              sinister
-                              text-sinister
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_0 == 'steel'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              steel
-                              text-steel
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_0 }}
-                          </span>
-                        </div>
-                      </div>
-                      <br />
-                      <!-- tipo pokemon 1 -->
-                      <div class="w-full mt-2">
-                        <div v-if="pokemon.type_1 == 'fire'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fire
-                              text-fire
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'grass'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              grass
-                              text-grass
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'water'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              water
-                              text-water
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'bug'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              bug
-                              text-bug
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'electric'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              electric
-                              text-electric
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'ground'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ground
-                              text-ground
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'rock'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              rock
-                              text-rock
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'fairy'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fairy
-                              text-fairy
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'poison'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              poison
-                              text-poison
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'psychic'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              psychic
-                              text-psychic
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'flying'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              flying
-                              text-flying
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'dragon'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              dragon
-                              text-dragon
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'fighting'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              fighting
-                              text-fighting
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'normal'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              normal
-                              text-normal
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'ghost'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ghost
-                              text-ghost
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'ice'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              ice
-                              text-ice
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'sinister'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              sinister
-                              text-sinister
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                        <div v-if="pokemon.type_1 == 'steel'">
-                          <span
-                            class="
-                              text-xs
-                              font-semibold
-                              inline-block
-                              py-1
-                              px-2
-                              uppercase
-                              rounded
-                              steel
-                              text-steel
-                              uppercase
-                              last:mr-0
-                              mr-1
-                            "
-                          >
-                            {{ pokemon.type_1 }}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="w-full">
+          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(1)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 1,
+                  'text-white bg-red-600': openTab === 1
+                }"
+              >
+                Kanto
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(2)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 2,
+                  'text-white bg-red-600': openTab === 2
+                }"
+              >
+                Johto
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(3)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 3,
+                  'text-white bg-red-600': openTab === 3
+                }"
+              >
+                Hoenn
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(4)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 4,
+                  'text-white bg-red-600': openTab === 4
+                }"
+              >
+                Sinnoh
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(5)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 5,
+                  'text-white bg-red-600': openTab === 5
+                }"
+              >
+                Teselia
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(6)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 6,
+                  'text-white bg-red-600': openTab === 6
+                }"
+              >
+                Kalos
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(7)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 7,
+                  'text-white bg-red-600': openTab === 7
+                }"
+              >
+                Alola
+              </a>
+            </li>
+            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <a
+                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+                v-on:click="toggleTabs(8)"
+                v-bind:class="{
+                  'text-red-600 bg-white': openTab !== 8,
+                  'text-white bg-red-600': openTab === 8
+                }"
+              >
+                Galar
+              </a>
+            </li>
+          </ul>
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+          >
+            <div class="px-4 py-5 flex-auto">
+              <div class="tab-content tab-space">
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 1,
+                    block: openTab === 1
+                  }"
+                >
+                  <Kanto />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 2,
+                    block: openTab === 2
+                  }"
+                >
+                  <Johto />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 3,
+                    block: openTab === 3
+                  }"
+                >
+                  <Hoenn />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 4,
+                    block: openTab === 4
+                  }"
+                >
+                  <Sinnoh />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 5,
+                    block: openTab === 5
+                  }"
+                >
+                  <Teselia />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 6,
+                    block: openTab === 6
+                  }"
+                >
+                  <Kalos />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 7,
+                    block: openTab === 7
+                  }"
+                >
+                  <Alola />
+                </div>
+                <div
+                  v-bind:class="{
+                    hidden: openTab !== 8,
+                    block: openTab === 8
+                  }"
+                >
+                  <Galar />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <!-- fin tabs -->
     </div>
   </div>
 </template>
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import axios from "axios";
-
-import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
-
-@Component({
-  components: {
-    IndexNavbar,
+<script>
+// import { Component, Vue } from "vue-property-decorator";
+import Kanto from "@/components/Regions/Kanto.vue";
+import Johto from "@/components/Regions/Johto.vue";
+import Hoenn from "@/components/Regions/Hoenn.vue";
+import Sinnoh from "@/components/Regions/Sinnoh.vue";
+import Teselia from "@/components/Regions/Teselia.vue";
+import Kalos from "@/components/Regions/Kalos.vue";
+import Alola from "@/components/Regions/Alola.vue";
+import Galar from "@/components/Regions/Galar.vue";
+export default {
+  name: "red-tabs",
+  data() {
+    return {
+      openTab: 1
+    };
   },
-})
-export default class Pokemones extends Vue {
-  // Regiones
-  kanto: any = []; //0-151
-  johto: any = []; //152-251
-  hoenn: any = []; //252-386
-  sinnoh: any = []; //387-493
-  teselia: any = []; //494-649
-  kalos: any = []; //650-721
-  alola: any = []; //722-809
-  galar: any = []; //809-898
-
-  async mounted() {
-    // console.log("mounted");
-    await this.getTodosKanto();
-  }
-  updated() { }
-
-  getTodosKanto() {
-    for (let i = 0; i <= 151; i++) {
-      axios
-        .get("https://pokeapi.co/api/v2/pokemon/" + i)
-        .then((respuesta) => {
-          // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
-          console.log(respuesta.data);
-
-          // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
-          let pokemon = {
-            name: respuesta.data.name.toUpperCase(),
-            url: respuesta.data.sprites.front_default,
-            // traigo las habilidades
-            ability_0: respuesta.data.abilities[0].ability.name,
-            ability_1: respuesta.data.abilities[1].ability.name,
-            ability_2: respuesta.data.abilities[2].ability.name,
-            weight: respuesta.data.weight,
-            // traigo el tipo 1 y 2
-            type_0: respuesta.data.types[0].type.name,
-            type_1: respuesta.data.types[1].type.name,
-          };
-          this.kanto.push(pokemon);
-          // console.log(this.pokemons);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  components: {
+    Kanto,
+    Johto,
+    Hoenn,
+    Sinnoh,
+    Teselia,
+    Kalos,
+    Alola,
+    Galar    
+  },
+  methods: {
+    toggleTabs: function(tabNumber) {
+      this.openTab = tabNumber;
     }
   }
-}
+};
 </script>
-<style>
-/* color de letra */
-.text-fire {
-  color: #a14b4b;
-}
-.text-grass {
-  color: #289c28;
-}
-.text-electric {
-  color: #b89405;
-}
-.text-water {
-  color: #3899f8;
-}
-.text-ground {
-  color: #a1936f;
-}
-.text-rock {
-  color: #998549;
-}
-.text-fairy {
-  color: #a773a7;
-}
-.text-poison {
-  color: #854a7a;
-}
-.text-bug {
-  color: #8d9921;
-}
-.text-dragon {
-  color: #6350b6;
-}
-.text-psychic {
-  color: #9c4966;
-}
-.text-flying {
-  color: #6f7cb4;
-}
-.text-fighting {
-  color: #a05038;
-}
-.text-normal {
-  color: #837d72;
-}
-.text-ghost {
-  color: #6060b0;
-}
-.text-ice {
-  color: #4397aa;
-}
-.text-sinister {
-  color: #7a5848;
-}
-.text-steel {
-  color: #787880;
-}
-/* color de fondo */
-.fire {
-  background-color: #f57d7dad;
-}
-.grass {
-  background-color: #82f182b2;
-}
-.electric {
-  background-color: #fcdf69b4;
-}
-.water {
-  background-color: #78b9faad;
-}
-.ground {
-  background-color: #e9d6a49c;
-}
-.rock {
-  background-color: #c5ae69a9;
-}
-.fairy {
-  background-color: #e6a3e6b0;
-}
-.poison {
-  background-color: #e075ccad;
-}
-.bug {
-  background-color: #c1cc5db4;
-}
-.dragon {
-  background-color: #8c77ec9f;
-}
-.psychic {
-  background-color: #fc81acab;
-}
-.flying {
-  background-color: #98a8f0b7;
-}
-.fighting {
-  background-color: #ce7c63a2;
-}
-.normal {
-  background-color: #a8a090ad;
-}
-.ghost {
-  background-color: #9494e7a8;
-}
-.ice {
-  background-color: #8adceeaf;
-}
-.sinister {
-  background-color: #ac8573b7;
-}
-.steel {
-  background-color: #a3a3a8b6;
-}
-</style>
