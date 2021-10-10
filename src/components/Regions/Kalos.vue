@@ -16,7 +16,7 @@
                 border border-solid border-blueGray-100
               "
             >
-              Kalos Pokédex
+              Kalos Pokédex: {{num}}
             </span>
           </div>
           <div class="block w-full overflow-x-auto">
@@ -1043,6 +1043,8 @@ export default class Kalos extends Vue {
 
   tipos: any = [];
 
+  num = "";
+
   async mounted() {
     // console.log("mounted");
     await this.getTodosKalos();
@@ -1055,12 +1057,14 @@ export default class Kalos extends Vue {
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
           // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
-          console.log(respuesta.data);
+          this.num = i - 649;
+          // console.log(this.num);
+          // console.log(respuesta.data);
           for (let j = 0; j < respuesta.data.types.length; j++) {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
           }
-          console.log(this.tipos);
+          // console.log(this.tipos);
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             name: respuesta.data.name.toUpperCase(),

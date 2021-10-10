@@ -16,7 +16,7 @@
                 border border-solid border-blueGray-100
               "
             >
-              Kanto Pokédex
+              Kanto Pokédex: {{num}}
             </span>
           </div>
           <div class="block w-full overflow-x-auto">
@@ -150,7 +150,7 @@
                   >
                     <div>
                       <img style="width: auto" :src="pokemon.url" alt="" />
-                    </div>
+                    </div>                    
                   </th>
                   <th
                     class="
@@ -1042,6 +1042,7 @@ export default class Kanto extends Vue {
   galar: any = []; //809-898
 
   tipos: any = [];
+  num = "";
 
   async mounted() {
     // console.log("mounted");
@@ -1057,14 +1058,18 @@ export default class Kanto extends Vue {
           // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
           // console.log(respuesta.data);
           // tipos for
+          this.num = i;
+          // console.log(this.num);
+          
           for (let j = 0; j < respuesta.data.types.length; j++) {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
           }
-          console.log(this.tipos);
+          // console.log(this.tipos);
 
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
+            id: respuesta.data.id,
             name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
             url_shiny: respuesta.data.sprites.front_shiny,

@@ -16,7 +16,7 @@
                 border border-solid border-blueGray-100
               "
             >
-              Teselia Pokédex
+              Teselia Pokédex: {{num}}
             </span>
           </div>
           <div class="block w-full overflow-x-auto">
@@ -1043,6 +1043,7 @@ export default class Teselia extends Vue {
 
   tipos: any = [];
 
+  num = "";
   async mounted() {
     // console.log("mounted");
     await this.getTodosTeselia();
@@ -1055,11 +1056,14 @@ export default class Teselia extends Vue {
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
           // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
+          this.num = i - 493;
+          // console.log(this.num);
+          
           for (let j = 0; j < respuesta.data.types.length; j++) {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
           }
-          console.log(this.tipos);
+          // console.log(this.tipos);
 
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
