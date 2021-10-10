@@ -171,9 +171,9 @@
                     "
                   >
                     <!-- Tipos de pokemon por color -->
-                    <div>
+                    <div class="flex flex-wrap">
                       <!-- tipo pokemon 0 -->
-                      <div>
+                      <div class="w-full">
                         <div v-if="pokemon.type_0 == 'fire'">
                           <span
                             class="
@@ -535,9 +535,9 @@
                           </span>
                         </div>
                       </div>
-                      <br>
+                      <br />
                       <!-- tipo pokemon 1 -->
-                      <div>
+                      <div class="w-full mt-2">
                         <div v-if="pokemon.type_1 == 'fire'">
                           <span
                             class="
