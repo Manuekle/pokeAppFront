@@ -24,7 +24,6 @@
               <div class="w-1/3 mr-2">
                 <input
                   v-model="filter"
-                  @keyup.prevent="filterPokemon()"
                   class="text-sm
                 block
                 my-4
@@ -34,14 +33,14 @@
                 border border-solid border-blueGray-100"
                   type="text"
                   placeholder="Buscar Pokémon"
-                />
+                  @keyup.prevent="filterPokemon()"
+                >
               </div>
               <div class="w-1/3">
                 <select
-                  v-model="tipo"
-                  @change="tipoFiltrado()"
-                  style="padding-right: 50px;"
                   id="tipo"
+                  v-model="tipo"
+                  style="padding-right: 50px;"
                   class="text-sm
                 block
                 my-4
@@ -49,32 +48,79 @@
                 text-blueGray-700
                 rounded
                 border border-solid border-blueGray-100"
+                  @change="tipoFiltrado()"
                 >
-                  <option value="" Disabled>Seleccione el tipo</option>
-                  <option value="">Todos</option>
-                  <option v-if="existe_tipo_normal">normal</option>
-                  <option v-if="existe_tipo_fighting">fighting</option>
-                  <option v-if="existe_tipo_flying">flying</option>
-                  <option v-if="existe_tipo_poison">poison</option>
-                  <option v-if="existe_tipo_ground">ground</option>
-                  <option v-if="existe_tipo_rock">rock</option>
-                  <option v-if="existe_tipo_bug">bug</option>
-                  <option v-if="existe_tipo_ghost">ghost</option>
-                  <option v-if="existe_tipo_steel">steel</option>
-                  <option v-if="existe_tipo_fire">fire</option>
-                  <option v-if="existe_tipo_water">water</option>
-                  <option v-if="existe_tipo_grass">grass</option>
-                  <option v-if="existe_tipo_electric">electric</option>
-                  <option v-if="existe_tipo_psychic">psychic</option>
-                  <option v-if="existe_tipo_ice">ice</option>
-                  <option v-if="existe_tipo_dragon">dragon</option>
-                  <option v-if="existe_tipo_dark">dark</option>
-                  <option v-if="existe_tipo_fairy">fairy</option>
+                  <option
+                    value=""
+                    Disabled
+                  >
+                    Seleccione el tipo
+                  </option>
+                  <option value="">
+                    Todos
+                  </option>
+                  <option v-if="existe_tipo_normal">
+                    normal
+                  </option>
+                  <option v-if="existe_tipo_fighting">
+                    fighting
+                  </option>
+                  <option v-if="existe_tipo_flying">
+                    flying
+                  </option>
+                  <option v-if="existe_tipo_poison">
+                    poison
+                  </option>
+                  <option v-if="existe_tipo_ground">
+                    ground
+                  </option>
+                  <option v-if="existe_tipo_rock">
+                    rock
+                  </option>
+                  <option v-if="existe_tipo_bug">
+                    bug
+                  </option>
+                  <option v-if="existe_tipo_ghost">
+                    ghost
+                  </option>
+                  <option v-if="existe_tipo_steel">
+                    steel
+                  </option>
+                  <option v-if="existe_tipo_fire">
+                    fire
+                  </option>
+                  <option v-if="existe_tipo_water">
+                    water
+                  </option>
+                  <option v-if="existe_tipo_grass">
+                    grass
+                  </option>
+                  <option v-if="existe_tipo_electric">
+                    electric
+                  </option>
+                  <option v-if="existe_tipo_psychic">
+                    psychic
+                  </option>
+                  <option v-if="existe_tipo_ice">
+                    ice
+                  </option>
+                  <option v-if="existe_tipo_dragon">
+                    dragon
+                  </option>
+                  <option v-if="existe_tipo_dark">
+                    dark
+                  </option>
+                  <option v-if="existe_tipo_fairy">
+                    fairy
+                  </option>
                 </select>
               </div>
             </div>
           </div>
-          <div class="block w-full overflow-x-auto" v-if="!pagina">
+          <div
+            v-if="!pagina"
+            class="block w-full overflow-x-auto"
+          >
             <!-- Projects table -->
             <table class="items-center w-full bg-transparent border-collapse">
               <thead>
@@ -190,7 +236,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(pokemon, key) in kanto" :key="key">
+                <tr
+                  v-for="(pokemon, key) in kanto"
+                  :key="key"
+                >
                   <th
                     class="
                       border-t-0
@@ -204,7 +253,11 @@
                     "
                   >
                     <div>
-                      <img style="width: auto" :src="pokemon.url" alt="" />
+                      <img
+                        style="width: auto"
+                        :src="pokemon.url"
+                        alt=""
+                      >
                     </div>
                   </th>
                   <th
@@ -224,7 +277,7 @@
                         style="width: auto"
                         :src="pokemon.url_shiny"
                         alt=""
-                      />
+                      >
                     </div>
                   </th>
                   <td
@@ -266,7 +319,10 @@
                     "
                   >
                     <div class="flex flex-wrap">
-                      <div class="w-full" v-if="pokemon.ability_0 != null">
+                      <div
+                        v-if="pokemon.ability_0 != null"
+                        class="w-full"
+                      >
                         <span
                           class="
                         text-xs
@@ -286,7 +342,10 @@
                           {{ pokemon.ability_0 }}
                         </span>
                       </div>
-                      <div class="w-full mt-2" v-if="pokemon.ability_1 != null">
+                      <div
+                        v-if="pokemon.ability_1 != null"
+                        class="w-full mt-2"
+                      >
                         <span
                           class="
                         text-xs
@@ -706,7 +765,7 @@
                           </span>
                         </div>
                       </div>
-                      <br />
+                      <br>
                       <!-- tipo pokemon 1 -->
                       <div class="w-full mt-2">
                         <div v-if="pokemon.type_1 == 'dark'">
@@ -1099,9 +1158,9 @@
           <!-- loader funcional -->
           <div>
             <div v-if="pokemons.length < 150">
-              <Loader></Loader>
+              <Loader />
             </div>
-            <div v-else></div>
+            <div v-else />
           </div>
         </div>
       </div>
@@ -1120,7 +1179,7 @@ import Swal from "sweetalert2";
   },
 })
 export default class Kanto extends Vue {
-  // Regiones
+  // Regiones  
   kanto: any = []; //0-151
   johto: any = []; //152-251
   hoenn: any = []; //252-386
@@ -1173,8 +1232,7 @@ export default class Kanto extends Vue {
         .then((respuesta) => {
 
           this.num = i;
-
-          this.pokemon = respuesta;
+        
           for (let j = 0; j < respuesta.data.types.length; j++) {
             this.tipos.push(respuesta.data.types[j].type.name);
           }

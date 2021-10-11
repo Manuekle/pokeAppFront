@@ -16,7 +16,7 @@
                 border border-solid border-blueGray-100
               "
             >
-              Kalos Pokédex: {{num}}
+              Kalos Pokédex: {{ num }}
             </span>
           </div>
           <div class="block w-full overflow-x-auto">
@@ -135,7 +135,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(pokemon, key) in kalos" :key="key">
+                <tr
+                  v-for="(pokemon, key) in kalos"
+                  :key="key"
+                >
                   <th
                     class="
                       border-t-0
@@ -149,7 +152,11 @@
                     "
                   >
                     <div>
-                      <img style="width: auto" :src="pokemon.url" alt="" />
+                      <img
+                        style="width: auto"
+                        :src="pokemon.url"
+                        alt=""
+                      >
                     </div>
                   </th>
                   <th
@@ -169,7 +176,7 @@
                         style="width: auto"
                         :src="pokemon.url_shiny"
                         alt=""
-                      />
+                      >
                     </div>
                   </th>
                   <td
@@ -627,7 +634,7 @@
                           </span>
                         </div>
                       </div>
-                      <br />
+                      <br>
                       <!-- tipo pokemon 1 -->
                       <div class="w-full mt-2">
                         <div v-if="pokemon.type_1 == 'dark'">
