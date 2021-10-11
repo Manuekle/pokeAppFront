@@ -273,7 +273,7 @@
                     "
                   >
                     <div class="flex flex-wrap">
-                      <div class="w-full">
+                      <div class="w-full" v-if="pokemon.ability_0 != null">
                         <span
                           class="
                         text-xs
@@ -293,7 +293,7 @@
                           {{ pokemon.ability_0 }}
                         </span>
                       </div>
-                      <div class="w-full mt-2">
+                      <div class="w-full mt-2" v-if="pokemon.ability_1 != null">
                         <span
                           class="
                         text-xs
@@ -1274,10 +1274,22 @@ export default class Kanto extends Vue {
         if (poke_tipo.indexOf(this.tipo) >= 0) {
           this.kanto.push(poke);
         } else {
-          // console.log("no hay");          
+          //no
         }
       } else {
+        // this.tipo = "";
         this.kanto = this.pokemons;
+        // Swal.fire({
+        //   title: "No hay coincidencias",
+        //   position: "center",
+        //   timer: 1000,
+        //   text: "No se encontró ningun Pokemon con ese Tipo",
+        //   showConfirmButton: false,
+        //   // confirmButtonText: "Aceptar",
+        //   // confirmButtonColor: "#238276",
+        //   backdrop: "rgba(0,0,0,0)",
+        //   background: "#eeeeee",
+        // });
       }
     }
   }
@@ -1287,41 +1299,41 @@ export default class Kanto extends Vue {
       // console.log(poke.type_0);
       // console.log(poke.type_1);
 
-      if (poke.type_0 == "normal") {
+      if (poke.type_0 == "normal" || poke.type_0 == "normal") {
         this.existe_tipo_normal = true;
-      } else if (poke.type_0 == "fighting") {
+      } else if (poke.type_0 == "fighting" || poke.type_1 == "fighting") {
         this.existe_tipo_fighting = true;
-      } else if (poke.type_0 == "flying") {
+      } else if (poke.type_0 == "flying" || poke.type_1 == "flying") {
         this.existe_tipo_flying = true;
-      } else if (poke.type_0 == "poison") {
+      } else if (poke.type_0 == "poison" || poke.type_1 == "poison") {
         this.existe_tipo_poison = true;
-      } else if (poke.type_0 == "ground") {
+      } else if (poke.type_0 == "ground" || poke.type_1 == "ground") {
         this.existe_tipo_ground = true;
-      } else if (poke.type_0 == "rock") {
+      } else if (poke.type_0 == "rock" || poke.type_1 == "rock") {
         this.existe_tipo_rock = true;
-      } else if (poke.type_0 == "bug") {
+      } else if (poke.type_0 == "bug" || poke.type_1 == "bug") {
         this.existe_tipo_bug = true;
-      } else if (poke.type_0 == "ghost") {
+      } else if (poke.type_0 == "ghost" || poke.type_1 == "ghost") {
         this.existe_tipo_ghost = true;
-      } else if (poke.type_0 == "steel") {
+      } else if (poke.type_0 == "steel" || poke.type_1 == "steel") {
         this.existe_tipo_steel = true;
-      } else if (poke.type_0 == "fire") {
+      } else if (poke.type_0 == "fire" || poke.type_1 == "fire") {
         this.existe_tipo_fire = true;
-      } else if (poke.type_0 == "water") {
+      } else if (poke.type_0 == "water" || poke.type_1 == "water") {
         this.existe_tipo_water = true;
-      } else if (poke.type_0 == "grass") {
+      } else if (poke.type_0 == "grass" || poke.type_1 == "grass") {
         this.existe_tipo_grass = true;
-      } else if (poke.type_0 == "electric") {
+      } else if (poke.type_0 == "electric" || poke.type_1 == "electric") {
         this.existe_tipo_electric = true;
-      } else if (poke.type_0 == "psychic") {
+      } else if (poke.type_0 == "psychic" || poke.type_1 == "psychic") {
         this.existe_tipo_psychic = true;
-      } else if (poke.type_0 == "ice") {
+      } else if (poke.type_0 == "ice" || poke.type_1 == "ice") {
         this.existe_tipo_ice = true;
-      } else if (poke.type_0 == "dragon") {
+      } else if (poke.type_0 == "dragon" || poke.type_1 == "dragon") {
         this.existe_tipo_dragon = true;
-      } else if (poke.type_0 == "dark") {
+      } else if (poke.type_0 == "dark" || poke.type_1 == "dark") {
         this.existe_tipo_dark = true;
-      } else if (poke.type_0 == "fairy") {
+      } else if (poke.type_0 == "fairy" || poke.type_1 == "fairy") {
         this.existe_tipo_fairy = true;
       }
     }
