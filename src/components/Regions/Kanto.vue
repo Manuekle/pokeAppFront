@@ -50,27 +50,26 @@
                 rounded
                 border border-solid border-blueGray-100"
                 >
-                  <option value="" selected disabled>
-                    Seleccione el tipo
-                  </option>
-                  <option v-if="existe_tipo_normal">Normal</option>
-                  <option v-if="existe_tipo_fighting">Fighting</option>
-                  <option v-if="existe_tipo_flying">Flying</option>
-                  <option v-if="existe_tipo_poison">Poison</option>
-                  <option v-if="existe_tipo_ground">Ground</option>
-                  <option v-if="existe_tipo_rock">Rock</option>
-                  <option v-if="existe_tipo_bug">Bug</option>
-                  <option v-if="existe_tipo_ghost">Ghost</option>
-                  <option v-if="existe_tipo_steel">Steel</option>
-                  <option v-if="existe_tipo_fire">Fire</option>
-                  <option v-if="existe_tipo_water">Water</option>
-                  <option v-if="existe_tipo_grass">Grass</option>
-                  <option v-if="existe_tipo_electric">Electric</option>
-                  <option v-if="existe_tipo_psychic">Psychic</option>
-                  <option v-if="existe_tipo_ice">Ice</option>
-                  <option v-if="existe_tipo_dragon">Dragon</option>
-                  <option v-if="existe_tipo_dark">Dark</option>
-                  <option v-if="existe_tipo_fairy">Fairy</option>
+                  <option value="" Disabled>Seleccione el tipo</option>
+                  <option value="">Todos</option>
+                  <option v-if="existe_tipo_normal">normal</option>
+                  <option v-if="existe_tipo_fighting">fighting</option>
+                  <option v-if="existe_tipo_flying">flying</option>
+                  <option v-if="existe_tipo_poison">poison</option>
+                  <option v-if="existe_tipo_ground">ground</option>
+                  <option v-if="existe_tipo_rock">rock</option>
+                  <option v-if="existe_tipo_bug">bug</option>
+                  <option v-if="existe_tipo_ghost">ghost</option>
+                  <option v-if="existe_tipo_steel">steel</option>
+                  <option v-if="existe_tipo_fire">fire</option>
+                  <option v-if="existe_tipo_water">water</option>
+                  <option v-if="existe_tipo_grass">grass</option>
+                  <option v-if="existe_tipo_electric">electric</option>
+                  <option v-if="existe_tipo_psychic">psychic</option>
+                  <option v-if="existe_tipo_ice">ice</option>
+                  <option v-if="existe_tipo_dragon">dragon</option>
+                  <option v-if="existe_tipo_dark">dark</option>
+                  <option v-if="existe_tipo_fairy">fairy</option>
                   <!-- <option
                     v-for="(tipo, key) in listaTipos"
                     :value="tipo.id"
@@ -1141,11 +1140,11 @@ export default class Kanto extends Vue {
     // console.log("mounted");
     await this.getTodosKanto();
     // await this.obtenerTipos();
-    await this.listarTipos();
+    // await this.listarTipos();
   }
 
   async updated() {
-    // await this.listarTipos();
+    await this.listarTipos();
   }
 
   async getTodosKanto() {
@@ -1158,7 +1157,7 @@ export default class Kanto extends Vue {
           // tipos for
           this.num = i;
           // console.log(this.num);
-          this.pokemon = respuesta
+          this.pokemon = respuesta;
           for (let j = 0; j < respuesta.data.types.length; j++) {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
@@ -1168,7 +1167,7 @@ export default class Kanto extends Vue {
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             id: respuesta.data.id,
-            name: respuesta.data.name.toUpperCase(),
+            name: respuesta.data.name,
             url: respuesta.data.sprites.front_default,
             url_shiny: respuesta.data.sprites.front_shiny,
             // traigo las habilidades
@@ -1181,7 +1180,9 @@ export default class Kanto extends Vue {
 
           // Pasamos un array de string a una materia de tipo array de objetos      
           this.kanto.push(pokemon);
-          this.pokemons = this.kanto;          
+          this.pokemons = this.kanto;
+          this.tipoFilter = this.kanto;
+          // console.log(this.pokemons);         
 
         })
         .catch((error) => {
@@ -1229,87 +1230,64 @@ export default class Kanto extends Vue {
 
   }
 
-  // async obtenerTipos() {
-  //   for (let i = 0; i <= 18; i++) {
-  //     await axios
-  //       .get("https://pokeapi.co/api/v2/type/" + i)
-  //       .then((respuesta) => {      
-
-
-  //         let tipos = {
-  //           id: respuesta.data.id,
-  //           name: respuesta.data.name,
-  //           // name: respuesta.data.name.charAt(0).toUpperCase() +
-  //           //   respuesta.data.name.slice(1),
-  //         }
-  //         this.listaTipos.push(tipos);
-  //         this.tipoFilter = this.listaTipos;
-  //         // console.log(this.tipoFilter);       
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
-
   async tipoFiltrado() {
     this.kanto = [];
     this.listarTipos();
-    for (let poket of this.tipoFilter) {
-      // console.log(poket.name);
-      let name = poket.name;
-      if (this.tipo != "") {
-        if (name.indexOf(this.tipo) >= 0) {
-          this.kanto.push(poket);
+    for (let poke of this.pokemons) {
+      let poke_tipo = poke.type_0;
+      console.log(poke_tipo);
+      if (this.tipo != '') {
+        if (poke_tipo.indexOf(this.tipo) >= 0) {
+          this.kanto.push(poke);
         } else {
-          // no hay coincidencias
+          console.log("no hay");          
         }
       } else {
-        this.kanto = this.tipoFilter;
+        this.kanto = this.pokemons;
       }
     }
   }
 
-  async listarTipos() {
+  listarTipos() {
     for (let poke of this.pokemons) {
-      console.log(poke.type_0);
-      console.log(poke.type_1);
+      // console.log(poke.type_0);
+      // console.log(poke.type_1);
 
-      if (poke.type_0 == "normal" || poke.type_1 == "normal") {
+      if (poke.type_0 == "normal") {
         this.existe_tipo_normal = true;
-      } else if (poke.type_0 == "fighting" || poke.type_1 == "fighting") {
+      } else if (poke.type_0 == "fighting") {
         this.existe_tipo_fighting = true;
-      } else if (poke.type_0 == "flying" || poke.type_1 == "flying") {
+      } else if (poke.type_0 == "flying") {
         this.existe_tipo_flying = true;
-      } else if (poke.type_0 == "poison" || poke.type_1 == "poison") {
+      } else if (poke.type_0 == "poison") {
         this.existe_tipo_poison = true;
-      } else if (poke.type_0 == "ground" || poke.type_1 == "ground") {
+      } else if (poke.type_0 == "ground") {
         this.existe_tipo_ground = true;
-      } else if (poke.type_0 == "rock" || poke.type_1 == "rock") {
+      } else if (poke.type_0 == "rock") {
         this.existe_tipo_rock = true;
-      } else if (poke.type_0 == "bug" || poke.type_1 == "bug") {
+      } else if (poke.type_0 == "bug") {
         this.existe_tipo_bug = true;
-      } else if (poke.type_0 == "ghost" || poke.type_1 == "ghost") {
+      } else if (poke.type_0 == "ghost") {
         this.existe_tipo_ghost = true;
-      } else if (poke.type_0 == "steel" || poke.type_1 == "steel") {
+      } else if (poke.type_0 == "steel") {
         this.existe_tipo_steel = true;
-      } else if (poke.type_0 == "fire" || poke.type_1 == "fire") {
+      } else if (poke.type_0 == "fire") {
         this.existe_tipo_fire = true;
-      } else if (poke.type_0 == "water" || poke.type_1 == "water") {
+      } else if (poke.type_0 == "water") {
         this.existe_tipo_water = true;
-      } else if (poke.type_0 == "grass" || poke.type_1 == "grass") {
+      } else if (poke.type_0 == "grass") {
         this.existe_tipo_grass = true;
-      } else if (poke.type_0 == "electric" || poke.type_1 == "electric") {
+      } else if (poke.type_0 == "electric") {
         this.existe_tipo_electric = true;
-      } else if (poke.type_0 == "psychic" || poke.type_1 == "psychic") {
+      } else if (poke.type_0 == "psychic") {
         this.existe_tipo_psychic = true;
-      } else if (poke.type_0 == "ice" || poke.type_1 == "ice") {
+      } else if (poke.type_0 == "ice") {
         this.existe_tipo_ice = true;
-      } else if (poke.type_0 == "dragon" || poke.type_1 == "dragon") {
+      } else if (poke.type_0 == "dragon") {
         this.existe_tipo_dragon = true;
-      } else if (poke.type_0 == "dark" || poke.type_1 == "dark") {
+      } else if (poke.type_0 == "dark") {
         this.existe_tipo_dark = true;
-      } else if (poke.type_0 == "fairy" || poke.type_1 == "fairy") {
+      } else if (poke.type_0 == "fairy") {
         this.existe_tipo_fairy = true;
       }
     }
