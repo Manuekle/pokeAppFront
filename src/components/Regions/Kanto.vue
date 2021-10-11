@@ -3,6 +3,7 @@
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap">
         <!-- Region de kanto -->
+        {{ tipoFilter }}
         <div class="w-full px-4 flex-1 md:w-auto md:flex-none">
           <div class="container">
             <div class="flex flex-wrap">
@@ -37,7 +38,7 @@
                 />
               </div>
             </div>
-          </div>          
+          </div>
           <div class="block w-full overflow-x-auto">
             <!-- Projects table -->
             <table class="items-center w-full bg-transparent border-collapse">
@@ -1045,6 +1046,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
 import Loader from "@/components/Usables/Loader.vue";
+import Swal from "sweetalert2";
 
 @Component({
   components: {
@@ -1068,12 +1070,15 @@ export default class Kanto extends Vue {
   pokemons: any = [];
   array: any = [];
 
+  tipoFilter: any = [];
+
   async mounted() {
     // console.log("mounted");
     await this.getTodosKanto();
-    // this.filterPokemon();
   }
-  updated() {}
+  updated() {
+    this.obtenerTipos();
+  }
 
   async getTodosKanto() {
     for (let i = 0; i <= 151; i++) {
@@ -1113,6 +1118,11 @@ export default class Kanto extends Vue {
         })
         .catch((error) => {
           console.log(error);
+          // Swal.fire(
+          //   "ERROR!",
+          //   "Se ha presentado un error en el servidor!",
+          //   "error"
+          // );
         });
     }
   }
@@ -1134,9 +1144,34 @@ export default class Kanto extends Vue {
     this.kanto = arreglo;
     if (this.kanto.length == 0) {
       console.log("no hay");
+      Swal.fire({
+        title: "No hay coincidencias",
+        position: "center",
+        timer: 1000,
+        text: "No se encontró ningun Pokemon con ese Nombre",
+        showConfirmButton: false,
+        // confirmButtonText: "Aceptar",
+        // confirmButtonColor: "#238276",
+        backdrop: "rgba(0,0,0,0)",
+        background: "#eeeeee",
+      });
       this.filter = "";
       this.kanto = this.pokemons;
     }
+
+  }
+
+  async obtenerTipos() {
+    await axios.get("https://pokeapi.co/api/v2/type")
+      .then((respuesta) => {
+        this.tipoFilter = respuesta.data.results;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  listarTipos() {
 
   }
 }
