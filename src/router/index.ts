@@ -84,6 +84,11 @@ const router = new Router({
       path: "/profile",
       component: Profile,
     },
+    // {
+    //   path: "/prueba",
+    //   name: "prueba",
+    //   component: () => import("../components/Regions/prueba.vue"),
+    // },
     { path: "/:pathMatch(.*)*", redirect: "/" },
   ], // fin de rutas
 });

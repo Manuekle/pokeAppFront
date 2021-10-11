@@ -115,7 +115,7 @@
                   }"
                 >
                   <Kanto />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -124,7 +124,7 @@
                   }"
                 >
                   <Johto />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -133,7 +133,7 @@
                   }"
                 >
                   <Hoenn />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -142,7 +142,7 @@
                   }"
                 >
                   <Sinnoh />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -151,7 +151,7 @@
                   }"
                 >
                   <Teselia />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -160,7 +160,7 @@
                   }"
                 >
                   <Kalos />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -169,7 +169,7 @@
                   }"
                 >
                   <Alola />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
                 <div
                   v-bind:class="{
@@ -178,12 +178,13 @@
                   }"
                 >
                   <Galar />
-                  <Loader />
+                  <!-- <Loader /> -->
                 </div>
               </div>
             </div>
-          </div>          
+          </div>
         </div>
+        <!-- <Scroll /> -->
       </div>
       <!-- fin tabs -->
     </div>
@@ -200,7 +201,8 @@ import Kalos from "@/components/Regions/Kalos.vue";
 import Alola from "@/components/Regions/Alola.vue";
 import Galar from "@/components/Regions/Galar.vue";
 
-import Loader from "@/components/Loading/Loader.vue";
+// import Loader from "@/components/Usables/Loader.vue";
+// import Scroll from "@/components/Usables/Scroll.vue";
 
 export default {
   name: "red-tabs",
@@ -217,8 +219,9 @@ export default {
     Teselia,
     Kalos,
     Alola,
-    Galar,
-    Loader
+    Galar
+    // Loader,
+    // Scroll
   },
   methods: {
     toggleTabs: function(tabNumber) {

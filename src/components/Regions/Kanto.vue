@@ -4,9 +4,11 @@
       <div class="flex flex-wrap">
         <!-- Region de kanto -->
         <div class="w-full px-4 flex-1 md:w-auto md:flex-none">
-          <div>
-            <span
-              class="               
+          <div class="container">
+            <div class="flex flex-wrap">
+              <div class="flex-1">
+                <span
+                  class="               
                 text-sm
                 block
                 my-4
@@ -15,10 +17,27 @@
                 rounded
                 border border-solid border-blueGray-100
               "
-            >
-              Kanto Pokédex: {{num}}
-            </span>
-          </div>
+                >
+                  Kanto Pokédex: {{ num }}
+                </span>
+              </div>
+              <div class="w-full px-4 flex-1">
+                <input
+                  v-model="filter"
+                  @keyup.prevent="filterPokemon()"
+                  class="text-sm
+                block
+                my-4
+                p-3
+                text-blueGray-700
+                rounded
+                border border-solid border-blueGray-100"
+                  type="text"
+                  placeholder="Buscar Pokémon"
+                />
+              </div>
+            </div>
+          </div>          
           <div class="block w-full overflow-x-auto">
             <!-- Projects table -->
             <table class="items-center w-full bg-transparent border-collapse">
@@ -150,7 +169,7 @@
                   >
                     <div>
                       <img style="width: auto" :src="pokemon.url" alt="" />
-                    </div>                    
+                    </div>
                   </th>
                   <th
                     class="
@@ -1025,9 +1044,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
+import Loader from "@/components/Usables/Loader.vue";
 
 @Component({
   components: {
+    Loader
   },
 })
 export default class Kanto extends Vue {
@@ -1043,24 +1064,28 @@ export default class Kanto extends Vue {
 
   tipos: any = [];
   num = "";
+  filter = "";
+  pokemons: any = [];
+  array: any = [];
 
   async mounted() {
     // console.log("mounted");
     await this.getTodosKanto();
+    // this.filterPokemon();
   }
-  updated() { }
+  updated() {}
 
   async getTodosKanto() {
     for (let i = 0; i <= 151; i++) {
       await axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
-          // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc
-          // console.log(respuesta.data);
+          // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc          
+
           // tipos for
           this.num = i;
           // console.log(this.num);
-          
+          this.pokemon = respuesta
           for (let j = 0; j < respuesta.data.types.length; j++) {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
@@ -1070,7 +1095,7 @@ export default class Kanto extends Vue {
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             id: respuesta.data.id,
-            name: respuesta.data.name.toUpperCase(),
+            name: respuesta.data.name,
             url: respuesta.data.sprites.front_default,
             url_shiny: respuesta.data.sprites.front_shiny,
             // traigo las habilidades
@@ -1080,14 +1105,39 @@ export default class Kanto extends Vue {
             type_0: this.tipos.shift(),
             type_1: this.tipos.shift(),
           };
+
+          // Pasamos un array de string a una materia de tipo array de objetos
           this.kanto.push(pokemon);
-          // console.log(this.pokemons);
+          this.pokemons = this.kanto;
+
         })
         .catch((error) => {
           console.log(error);
         });
     }
   }
+  // filtro de pokemones
+  filterPokemon() {
+    let arreglo = [];
 
+    for (let poke of this.pokemons) {
+      let name = poke.name.toLowerCase();
+
+      if (
+        name.indexOf(this.filter) >= 0 ||
+        this.filter == ""
+      ) {
+        arreglo.push(poke);
+      }
+    }
+
+    this.kanto = arreglo;
+    if (this.kanto.length == 0) {
+      console.log("no hay");
+      this.filter = "";
+      this.kanto = this.pokemons;
+    }
+
+  }
 }
 </script>
