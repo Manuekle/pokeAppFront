@@ -3,11 +3,10 @@
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap">
         <!-- Region de kanto -->
-        {{ tipoFilter }}
         <div class="w-full px-4 flex-1 md:w-auto md:flex-none">
-          <div class="container">
+          <div class="container mx-auto">
             <div class="flex flex-wrap">
-              <div class="flex-1">
+              <div class="w-1/3 mr-2">
                 <span
                   class="               
                 text-sm
@@ -22,7 +21,7 @@
                   Kanto Pokédex: {{ num }}
                 </span>
               </div>
-              <div class="w-full px-4 flex-1">
+              <div class="w-1/3 mr-2">
                 <input
                   v-model="filter"
                   @keyup.prevent="filterPokemon()"
@@ -36,6 +35,30 @@
                   type="text"
                   placeholder="Buscar Pokémon"
                 />
+              </div>
+              <div class="w-1/3">
+                <select
+                  style="padding-right: 50px;"
+                  id="tipo"
+                  class="text-sm
+                block
+                my-4
+                p-3               
+                text-blueGray-700
+                rounded
+                border border-solid border-blueGray-100"
+                >
+                  <option value="" selected disabled>
+                    Seleccione el tipo
+                  </option>
+                  <option
+                    v-for="(tipo, key) in listaTipos"
+                    :value="tipo.id"
+                    :key="key"
+                  >
+                    {{ tipo.name }}
+                  </option>
+                </select>
               </div>
             </div>
           </div>
@@ -132,7 +155,7 @@
                       text-left
                     "
                   >
-                    Abilidades
+                    Habilidades
                   </th>
                   <th
                     class="
@@ -1071,17 +1094,20 @@ export default class Kanto extends Vue {
   array: any = [];
 
   tipoFilter: any = [];
+  listaTipos: any = [];
+  tipo = "";
 
   async mounted() {
     // console.log("mounted");
     await this.getTodosKanto();
+    await this.obtenerTipos();
   }
   updated() {
-    this.obtenerTipos();
+    // this.obtenerTipos();
   }
 
   async getTodosKanto() {
-    for (let i = 0; i <= 151; i++) {
+    for (let i = 0; i <= 5; i++) {
       await axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
@@ -1100,7 +1126,7 @@ export default class Kanto extends Vue {
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             id: respuesta.data.id,
-            name: respuesta.data.name,
+            name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
             url_shiny: respuesta.data.sprites.front_shiny,
             // traigo las habilidades
@@ -1162,17 +1188,28 @@ export default class Kanto extends Vue {
   }
 
   async obtenerTipos() {
-    await axios.get("https://pokeapi.co/api/v2/type")
-      .then((respuesta) => {
-        this.tipoFilter = respuesta.data.results;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    for (let i = 0; i <= 18; i++) {
+      await axios
+        .get("https://pokeapi.co/api/v2/type/" + i)
+        .then((respuesta) => {
+          // this.tipoFilter = respuesta.data;
 
-  listarTipos() {
+          let tipos = {
+            id: respuesta.data.id,
+            name: respuesta.data.name.charAt(0).toUpperCase() +
+              respuesta.data.name.slice(1),
+          }
+          console.log(tipos);
 
+          // Pasamos un array de string a una materia de tipo array de objetos
+          this.listaTipos.push(tipos);
+          this.tipoFilter = this.listaTipos;
+          // console.log(this.tipoFilter);          
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 }
 </script>

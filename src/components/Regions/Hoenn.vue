@@ -112,7 +112,7 @@
                       text-left
                     "
                   >
-                    Abilidades
+                    Habilidades
                   </th>
                   <th
                     class="
