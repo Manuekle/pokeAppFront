@@ -272,8 +272,10 @@
                       p-4
                     "
                   >
-                    <span
-                      class="
+                    <div class="flex flex-wrap">
+                      <div class="w-full">
+                        <span
+                          class="
                         text-xs
                         font-semibold
                         inline-block
@@ -287,9 +289,31 @@
                         last:mr-0
                         mr-1
                       "
-                    >
-                      {{ pokemon.ability }}
-                    </span>
+                        >
+                          {{ pokemon.ability_0 }}
+                        </span>
+                      </div>
+                      <div class="w-full mt-2">
+                        <span
+                          class="
+                        text-xs
+                        font-semibold
+                        inline-block
+                        py-1
+                        px-2
+                        uppercase
+                        rounded
+                        text-blueGray-600
+                        bg-blueGray-200
+                        uppercase
+                        last:mr-0
+                        mr-1
+                      "
+                        >
+                          {{ pokemon.ability_1 }}
+                        </span>
+                      </div>
+                    </div>
                   </td>
 
                   <!-- pokemon tipo -->
@@ -1107,6 +1131,7 @@ export default class Kanto extends Vue {
   galar: any = []; //809-898
 
   tipos: any = [];
+  habilidades: any = [];
   num = "";
   filter = "";
   pokemons: any = [];
@@ -1162,16 +1187,25 @@ export default class Kanto extends Vue {
             // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
           }
+          // for ability
+          for (let k = 0; k < respuesta.data.abilities.length; k++) {
+            // console.log(respuesta.data.abilities[k].ability.name);
+            this.habilidades.push(respuesta.data.abilities[k].ability.name);
+          }
+          console.log(this.habilidades);
+
+
           // console.log(this.tipos);
 
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
             id: respuesta.data.id,
-            name: respuesta.data.name,
+            name: respuesta.data.name.toUpperCase(),
             url: respuesta.data.sprites.front_default,
             url_shiny: respuesta.data.sprites.front_shiny,
             // traigo las habilidades
-            ability: respuesta.data.abilities[0].ability.name,
+            ability_0: this.habilidades.shift(),
+            ability_1: this.habilidades.shift(),
             weight: respuesta.data.weight,
             // traigo el tipo 1 y 2
             type_0: this.tipos.shift(),
@@ -1212,7 +1246,7 @@ export default class Kanto extends Vue {
 
     this.kanto = arreglo;
     if (this.kanto.length == 0) {
-      console.log("no hay");
+      // console.log("no hay");
       Swal.fire({
         title: "No hay coincidencias",
         position: "center",
@@ -1235,12 +1269,12 @@ export default class Kanto extends Vue {
     this.listarTipos();
     for (let poke of this.pokemons) {
       let poke_tipo = poke.type_0;
-      console.log(poke_tipo);
+      // console.log(poke_tipo);
       if (this.tipo != '') {
         if (poke_tipo.indexOf(this.tipo) >= 0) {
           this.kanto.push(poke);
         } else {
-          console.log("no hay");          
+          // console.log("no hay");          
         }
       } else {
         this.kanto = this.pokemons;
