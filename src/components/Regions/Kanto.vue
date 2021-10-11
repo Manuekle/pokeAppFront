@@ -70,18 +70,11 @@
                   <option v-if="existe_tipo_dragon">dragon</option>
                   <option v-if="existe_tipo_dark">dark</option>
                   <option v-if="existe_tipo_fairy">fairy</option>
-                  <!-- <option
-                    v-for="(tipo, key) in listaTipos"
-                    :value="tipo.id"
-                    :key="key"
-                  >
-                    {{ tipo.name }}
-                  </option> -->
                 </select>
               </div>
             </div>
           </div>
-          <div class="block w-full overflow-x-auto">
+          <div class="block w-full overflow-x-auto" v-if="!pagina">
             <!-- Projects table -->
             <table class="items-center w-full bg-transparent border-collapse">
               <thead>
@@ -1103,6 +1096,13 @@
               </tbody>
             </table>
           </div>
+          <!-- loader funcional -->
+          <div>
+            <div v-if="pokemons.length < 150">
+              <Loader></Loader>
+            </div>
+            <div v-else></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1135,12 +1135,9 @@ export default class Kanto extends Vue {
   num = "";
   filter = "";
   pokemons: any = [];
-  array: any = [];
-
-  listaTipos: any = [];
   tipo = "";
-  tipoFilter = [];
 
+  // tipos de pokemon para filtrar
   existe_tipo_normal = false;
   existe_tipo_fighting = false;
   existe_tipo_flying = false;
@@ -1160,12 +1157,9 @@ export default class Kanto extends Vue {
   existe_tipo_dark = false;
   existe_tipo_fairy = false;
 
-
   async mounted() {
     // console.log("mounted");
     await this.getTodosKanto();
-    // await this.obtenerTipos();
-    // await this.listarTipos();
   }
 
   async updated() {
@@ -1177,25 +1171,17 @@ export default class Kanto extends Vue {
       await axios
         .get("https://pokeapi.co/api/v2/pokemon/" + i)
         .then((respuesta) => {
-          // si no te cargan todos los pokemons es por que hay muchos datos cargados, la solucion es formatear tu pc          
 
-          // tipos for
           this.num = i;
-          // console.log(this.num);
+
           this.pokemon = respuesta;
           for (let j = 0; j < respuesta.data.types.length; j++) {
-            // console.log(respuesta.data.types[j].type.name);
             this.tipos.push(respuesta.data.types[j].type.name);
           }
-          // for ability
+
           for (let k = 0; k < respuesta.data.abilities.length; k++) {
-            // console.log(respuesta.data.abilities[k].ability.name);
             this.habilidades.push(respuesta.data.abilities[k].ability.name);
           }
-          console.log(this.habilidades);
-
-
-          // console.log(this.tipos);
 
           // si te sale un error en (respuesta.data.#la_variable) no se por que sera xd pero funciona
           let pokemon = {
@@ -1215,9 +1201,6 @@ export default class Kanto extends Vue {
           // Pasamos un array de string a una materia de tipo array de objetos      
           this.kanto.push(pokemon);
           this.pokemons = this.kanto;
-          this.tipoFilter = this.kanto;
-          // console.log(this.pokemons);         
-
         })
         .catch((error) => {
           console.log(error);
@@ -1229,6 +1212,7 @@ export default class Kanto extends Vue {
         });
     }
   }
+
   // filtro de pokemones
   filterPokemon() {
     let arreglo = [];
@@ -1246,7 +1230,6 @@ export default class Kanto extends Vue {
 
     this.kanto = arreglo;
     if (this.kanto.length == 0) {
-      // console.log("no hay");
       Swal.fire({
         title: "No hay coincidencias",
         position: "center",
@@ -1269,7 +1252,6 @@ export default class Kanto extends Vue {
     this.listarTipos();
     for (let poke of this.pokemons) {
       let poke_tipo = poke.type_0;
-      // console.log(poke_tipo);
       if (this.tipo != '') {
         if (poke_tipo.indexOf(this.tipo) >= 0) {
           this.kanto.push(poke);
@@ -1277,27 +1259,13 @@ export default class Kanto extends Vue {
           //no
         }
       } else {
-        // this.tipo = "";
         this.kanto = this.pokemons;
-        // Swal.fire({
-        //   title: "No hay coincidencias",
-        //   position: "center",
-        //   timer: 1000,
-        //   text: "No se encontró ningun Pokemon con ese Tipo",
-        //   showConfirmButton: false,
-        //   // confirmButtonText: "Aceptar",
-        //   // confirmButtonColor: "#238276",
-        //   backdrop: "rgba(0,0,0,0)",
-        //   background: "#eeeeee",
-        // });
       }
     }
   }
 
   listarTipos() {
     for (let poke of this.pokemons) {
-      // console.log(poke.type_0);
-      // console.log(poke.type_1);
 
       if (poke.type_0 == "normal" || poke.type_0 == "normal") {
         this.existe_tipo_normal = true;

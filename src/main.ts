@@ -10,6 +10,9 @@ import "@/assets/styles/tailwind.css";
 // import { Flowbite } from '@themesberg/flowbite'
 // Vue.use(Flowbite)
 import 'vue-loading-overlay/dist/vue-loading.css';
+import InfiniteLoading from 'vue-infinite-loading';
+
+Vue.use(InfiniteLoading, { /* options */ });
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
